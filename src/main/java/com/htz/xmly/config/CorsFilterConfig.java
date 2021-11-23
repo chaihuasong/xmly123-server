@@ -1,4 +1,4 @@
-package com.htz.server.config;
+package com.htz.xmly.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

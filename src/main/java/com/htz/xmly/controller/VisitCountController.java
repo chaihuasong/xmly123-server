@@ -20,7 +20,7 @@ public class VisitCountController {
 
 
     @PostMapping("/visited")
-    public void saveVisitCount(String date, String type) {
+    public String saveVisitCount(String date, String type) {
         VisitCount visitCount = visitCountRepository.findByDateAndTypeEquals(date, type);
         if (visitCount != null) {
             visitCount.setCount(visitCount.getCount() + 1);
@@ -32,6 +32,8 @@ public class VisitCountController {
             visitCount.setCount(1);
         }
         visitCountRepository.save(visitCount);
+
+        return "success";
     }
 
     @GetMapping("/getVisitCount")
