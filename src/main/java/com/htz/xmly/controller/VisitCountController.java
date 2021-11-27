@@ -37,7 +37,16 @@ public class VisitCountController {
     }
 
     @GetMapping("/getVisitCount")
-    public List getReportInfoById(String id) {
+    public List getVisitCount() {
         return visitCountRepository.findAll();
+    }
+
+    @GetMapping("/save")
+    public VisitCount getReportInfoById(String id, String date, String type) {
+        VisitCount visitCount = visitCountRepository.findByIdEquals(id);
+        visitCount.setDate(date);
+        visitCount.setType(type);
+        visitCountRepository.save(visitCount);
+        return visitCountRepository.findByIdEquals(id);
     }
 }
